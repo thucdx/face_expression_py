@@ -9,14 +9,14 @@ gender = 'no data'
 expression = 'no data'
 
 consumer = KafkaConsumer('iot', 
-		group_id='python-demo',
+		group_id='python-demo-2',
 		bootstrap_servers=['slave7', 'slave8', 'slave9'])	
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
 
 @app.route("/data")
 def get_date():
