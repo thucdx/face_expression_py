@@ -1,0 +1,55 @@
+@font-face {
+	font-family: digital;
+	src: url("../fonts/digital-7.ttf");
+}
+
+@-webkit-keyframes borderBlink {    
+    from, to {    
+        border-color: transparent    
+    }    
+    50% {    
+        border-color: black    
+    }    
+}
+
+@keyframes blinker { 
+	0% { opacity: 1; }
+	25% { opacity: 0.5; } 
+  	50% { opacity: 0.0; }
+  	75% { opacity: 0.75; } 
+}
+
+@keyframes borderBlink {    
+    from, to {    
+        border-color: transparent    
+    }    
+    50% {    
+        border-color: black    
+    }    
+}  
+
+body {
+	/*font-family: digital;*/
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+.label {
+	font-weight: lighter;
+}
+
+#info {
+	border: 1px solid red;
+	border-radius: 1em;
+	width: 20em;
+	height: 13em;
+	padding: 1em;
+}
+
+#age, #gender, #expression {
+	color: red;
+	/*animation: blinker 1.5s linear infinite;*/
+}
+
+th, td {
+	font-size: 2em;
+}

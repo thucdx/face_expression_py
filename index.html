@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Face detection </title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="jquery-3.1.0.min.js"></script>
+	<script>
+		$(function() {
+			(function worker() {
+				  $.ajax({
+				    type: "GET",
+					url: 'http://localhost:5000/data',
+					async: true,
+					crossDomain: true,
+					success: function(data, status) {
+						console.log(data + " " + status);
+						var v = JSON.parse(data);
+
+						$("#age").text(v.age);
+						$("#gender").text(v.gender);
+						$("#expression").text(v.expression);
+					},
+				    complete: function() {
+				      // Schedule the next request when the current one's complete
+				      setTimeout(worker, 1000);
+				    }
+				  });
+			})();
+		});
+	</script>
+</head>
+
+<body>
+<table id="info">
+	<tr><th colspan="2"> Information </th>
+	<tr><td class="label">Age</td><td id="age">No data</td></tr>
+	<tr><td class="label">Gender</td><td id="gender">No data</td></tr>
+	<tr><td class="label">Expression</td><td id="expression">No data</td></tr>
+</table>
+</body>
+
+</html>
